@@ -88,6 +88,7 @@ public class ClientController {
         if(this.clientRepository.existsById(client.getId  ())){
             return new ResponseEntity<Client>(HttpStatus.CONFLICT);
         }
+        
         this.clientRepository.save(client);
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(ucBuilder.path("/client/{id}").buildAndExpand(client.getId()).toUri());
